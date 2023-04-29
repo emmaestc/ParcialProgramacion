@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estadio.API", "Estadio.API\Estadio.API.csproj", "{E789A43B-0D11-4A74-A87D-85B048C5273A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Estadio.API", "Estadio.API\Estadio.API.csproj", "{E789A43B-0D11-4A74-A87D-85B048C5273A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estadio.WEB", "Estadio.WEB\Estadio.WEB.csproj", "{C5C4FA20-EA81-4D83-B03F-9204D55410C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Estadio.WEB", "Estadio.WEB\Estadio.WEB.csproj", "{C5C4FA20-EA81-4D83-B03F-9204D55410C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estadio.Shared", "Estadio.Shared\Estadio.Shared.csproj", "{3549FD0D-DD79-4D10-8567-8C8AE593B2D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Estadio.Shared", "Estadio.Shared\Estadio.Shared.csproj", "{3549FD0D-DD79-4D10-8567-8C8AE593B2D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

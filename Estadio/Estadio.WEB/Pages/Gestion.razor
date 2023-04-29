@@ -1,0 +1,48 @@
+﻿@page "/home"
+@using Estadio.Shared.Entities;
+@using Estadio.WEB.Repositories;
+@inject IRepository repository
+@inject HttpClient Http
+
+<h3>Gestión de boletas</h3>
+
+@if (boletas is null)
+{
+    <p>Cargando...</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Boletas</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var boleta in boletas!)
+            {
+                <tr>
+                    <td>
+                        <a class="btn btn-warning" href="/boletas/edit/@boleta.Id">Editar</a>
+                    </td>
+                    <td>
+                        @boleta.Id
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+
+@code {
+    public List<Boleta>? boletas { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var responseHttp = await repository.Get<List<Boleta>>("/api/boletas");
+        boletas = responseHttp.Response;
+    }
+
+}

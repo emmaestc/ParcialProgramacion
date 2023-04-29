@@ -1,0 +1,69 @@
+﻿@page "/boletas/edit/{Id:int}"
+@using CurrieTechnologies.Razor.SweetAlert2;
+@using Estadio.Shared.Entities;
+@inject NavigationManager navigationManager
+@inject IRepository repository
+@inject SweetAlertService sweetAlertService
+
+<h3>Editar Boleta</h3>
+
+@if (boleta is null)
+{
+    <p>Cargando...</p>
+}
+else
+{
+    <BoletaForm @ref="boletaForm" Boleta="boleta" OnValidSubmit="Edit" ReturnAction="Return" />
+}
+
+@code {
+    private Boleta? boleta;
+    private BoletaForm? boletaForm;
+
+    [Parameter]
+    public int Id { get; set; }
+    //public string FechaUso { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var responseHTTP = await repository.Get<Boleta>($"api/boletas/{Id}");
+
+        if (responseHTTP.Error)
+        {
+            if (responseHTTP.HttpResponseMessage.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                navigationManager.NavigateTo("boletas");
+            }
+            else
+            {
+                var messageError = await responseHTTP.GetErrorMessageAsync();
+                await sweetAlertService.FireAsync("Error", messageError, SweetAlertIcon.Error);
+            }
+        }
+        else
+        {
+            boleta = responseHTTP.Response;
+        }
+    }
+
+    private async Task Edit()
+    {
+        var responseHTTP = await repository.Put("home", boleta);
+
+        if (responseHTTP.Error)
+        {
+            var mensajeError = await responseHTTP.GetErrorMessageAsync();
+            await sweetAlertService.FireAsync("Error", mensajeError, SweetAlertIcon.Error);
+        }
+        else
+        {
+            //boletaForm!.FormPostedSuccessfully = true;
+            navigationManager.NavigateTo("boletas");
+        }
+    }
+
+    private void Return()
+    {
+        navigationManager.NavigateTo("boletas");
+    }
+}

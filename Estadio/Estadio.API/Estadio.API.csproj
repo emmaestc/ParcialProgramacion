@@ -21,4 +21,8 @@
     <ProjectReference Include="..\Estadio.Shared\Estadio.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="NewFolder\" />
+  </ItemGroup>
+
 </Project>

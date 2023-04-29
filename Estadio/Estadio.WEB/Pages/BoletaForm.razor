@@ -1,0 +1,28 @@
+﻿@using Estadio.Shared.Entities;
+<EditForm Model="Boleta" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator />
+    <div class="mb-3">
+        <label>Boleta:</label>
+        <div>
+            <InputText class="form-control" @bind-Value="@Boleta.Usada" />
+            <ValidationMessage For="@(() => Boleta.Usada)" />
+        </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Guardar Cambios</button>
+    <button class="btn btn-success" @onclick="ReturnAction">Regresar</button>
+</EditForm>
+
+@code {
+    [EditorRequired]
+    [Parameter]
+    public Boleta Boleta { get; set; } = null!;
+
+    [EditorRequired]
+    [Parameter]
+    public EventCallback OnValidSubmit { get; set; }
+
+    [EditorRequired]
+    [Parameter]
+    public EventCallback ReturnAction { get; set; }
+}

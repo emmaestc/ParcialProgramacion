@@ -7,8 +7,29 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Pages\Boletas\BoletasIndex.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CurrieTechnologies.Razor.SweetAlert2" Version="5.5.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.2" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Boletas\BoletasIndex.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\Boletas\BoletasIndex.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Pages\Boletas\BoletasIndex.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Estadio.Shared\Estadio.Shared.csproj" />
   </ItemGroup>
 
 </Project>
