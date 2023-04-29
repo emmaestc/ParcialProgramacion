@@ -1,21 +1,26 @@
 ﻿@using Estadio.Shared.Entities;
+
 <EditForm Model="Boleta" OnValidSubmit="OnValidSubmit">
     <DataAnnotationsValidator />
     <div class="mb-3">
-        <label>Boleta:</label>
-        
+        <label>Fecha de uso:</label>
         <div>
             <InputText class="form-control" @bind-Value="@Boleta.FechaUso" />
             <ValidationMessage For="@(() => Boleta.Usada)" />
         </div>
-        <div>
-            <InputText class="form-control" @bind-Value="@Boleta.Usada" />
-            <ValidationMessage For="@(() => Boleta.Usada)" />
-        </div>
-        <div>
-            <InputText class="form-control" @bind-Value="@Boleta.Porteria" />
-            <ValidationMessage For="@(() => Boleta.Usada)" />
-        </div>
+        <label>Porteria de ingreso:</label>
+        <select class="form-control" @onchange="@(e => Boleta.Porteria = e.Value.ToString())">
+            <option value="">Selecciona una portería</option>
+            <option value="Norte">Norte</option>
+            <option value="Sur">Sur</option>
+            <option value="Oriental">Oriental</option>
+            <option value="Occidental">Occidental</option>
+        </select>
+        @if (Boleta.Porteria != null)
+        {
+            Boleta.Usada = "SI";
+        }
+
     </div>
 
     <button class="btn btn-primary" type="submit">Guardar Cambios</button>
@@ -23,6 +28,8 @@
 </EditForm>
 
 @code {
+
+
     [EditorRequired]
     [Parameter]
     public Boleta Boleta { get; set; } = null!;

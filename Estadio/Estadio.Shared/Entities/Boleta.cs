@@ -21,5 +21,6 @@ namespace Estadio.Shared.Entities
         [Display(Name = "Porteria")]
         [Required(ErrorMessage = "El campo {0 es obligatorio.}")]
         public string Porteria { get; set; } = null!;
+
     }
 }
