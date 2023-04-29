@@ -48,7 +48,7 @@ else
 
     private async Task Edit()
     {
-        var responseHTTP = await repository.Put("home", boleta);
+        var responseHTTP = await repository.Put("/api/boletas", boleta);
 
         if (responseHTTP.Error)
         {
@@ -58,12 +58,15 @@ else
         else
         {
             //boletaForm!.FormPostedSuccessfully = true;
-            navigationManager.NavigateTo("boletas");
+            navigationManager.NavigateTo("/home");
         }
     }
 
     private void Return()
     {
-        navigationManager.NavigateTo("boletas");
+        navigationManager.NavigateTo("/home");
     }
 }
+
+
+

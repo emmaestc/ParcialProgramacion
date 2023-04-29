@@ -16,9 +16,15 @@ else
         <thead>
             <tr>
                 <th></th>
-                <th>Boletas</th>
+                
+                <th>Id</th>
+                <th>Fecha uso</th>
+                <th>Usado</th>
+                <th>Porteria</th>
             </tr>
+
         </thead>
+
         <tbody>
             @foreach (var boleta in boletas!)
             {
@@ -26,8 +32,19 @@ else
                     <td>
                         <a class="btn btn-warning" href="/boletas/edit/@boleta.Id">Editar</a>
                     </td>
+                    
                     <td>
+                    
                         @boleta.Id
+                    </td>
+                    <td>
+                        @boleta.FechaUso
+                    </td>
+                    <td>
+                        @boleta.Usada
+                    </td>
+                    <td>
+                        @boleta.Porteria
                     </td>
                 </tr>
             }

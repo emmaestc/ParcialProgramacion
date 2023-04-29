@@ -3,8 +3,17 @@
     <DataAnnotationsValidator />
     <div class="mb-3">
         <label>Boleta:</label>
+        
+        <div>
+            <InputText class="form-control" @bind-Value="@Boleta.FechaUso" />
+            <ValidationMessage For="@(() => Boleta.Usada)" />
+        </div>
         <div>
             <InputText class="form-control" @bind-Value="@Boleta.Usada" />
+            <ValidationMessage For="@(() => Boleta.Usada)" />
+        </div>
+        <div>
+            <InputText class="form-control" @bind-Value="@Boleta.Porteria" />
             <ValidationMessage For="@(() => Boleta.Usada)" />
         </div>
     </div>

@@ -1,5 +1,6 @@
 ﻿using Estadio.API.Data;
 using Estadio.Shared.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,7 +8,8 @@ namespace Estadio.API.Controllers
 {
     [ApiController]
     [Route("/api/boletas")]
-    public class BoletasController : ControllerBase
+
+    public class BoletasController : Controller
     {
 
         private readonly DataContext _context;
@@ -43,17 +45,13 @@ namespace Estadio.API.Controllers
             return Ok(boleta);
         }
 
-        [HttpPut]  
+        [HttpPut]
         public async Task<ActionResult> PutAsync(Boleta boleta)
         {
             _context.Update(boleta);
             await _context.SaveChangesAsync();
             return Ok(boleta);
         }
-
-
-
-
 
 
     }
